@@ -36,4 +36,10 @@ clawdbot_repo_dir: "{{ clawdbot_code_dir }}/clawdbot"
 #   clawdbot_ssh_keys:
 #     - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx user@host"
 #     - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDxxxxxxxxxxxxxxxxxxxxxxx user@host"
+# AI provider settings
+clawdbot_ai_provider: openai
+clawdbot_ai_model: gpt-5.2
+clawdbot_ai_max_tokens: 4096
+# openai_api_key is stored in group_vars/clawdbot_servers/vault.yml
+
 clawdbot_ssh_keys: []
