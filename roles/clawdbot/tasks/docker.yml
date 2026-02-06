@@ -1,0 +1,5 @@
+---
+# Docker installation (Linux only)
+
+- name: Include Linux Docker installation
+  ansible.builtin.include_tasks: docker-linux.yml

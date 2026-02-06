@@ -1,0 +1,5 @@
+---
+# Firewall configuration (Linux only)
+
+- name: Include Linux firewall configuration
+  ansible.builtin.include_tasks: firewall-linux.yml
