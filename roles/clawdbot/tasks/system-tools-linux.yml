@@ -40,7 +40,7 @@
       - unzip
       - rsync
       - less
-      # Build essentials for Homebrew on Linux
+      # Build essentials
       - build-essential
       - file
     state: present
@@ -68,9 +68,6 @@
       export TERM=xterm-256color
       export COLORTERM=truecolor
 
-      # Add Homebrew to PATH (Linux)
-      eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
       # Add pnpm to PATH
       export PNPM_HOME="{{ clawdbot_home }}/.local/share/pnpm"
       export PATH="{{ clawdbot_home }}/.local/bin:$PNPM_HOME:$PATH"
@@ -96,9 +93,6 @@
       # Enable 256 colors
       export TERM=xterm-256color
       export COLORTERM=truecolor
-
-      # Add Homebrew to PATH (Linux)
-      eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
       # Add pnpm to PATH
       export PNPM_HOME="{{ clawdbot_home }}/.local/share/pnpm"

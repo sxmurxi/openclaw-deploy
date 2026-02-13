@@ -58,29 +58,6 @@
       ansible.builtin.set_fact:
         is_root: "{{ user_id.stdout == '0' }}"
 
-    - name: Check if Homebrew is installed
-      ansible.builtin.stat:
-        path: /home/linuxbrew/.linuxbrew/bin/brew
-      register: homebrew_check
-
-    - name: Install Homebrew
-      ansible.builtin.shell: |
-        NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      args:
-        creates: /home/linuxbrew/.linuxbrew/bin/brew
-      when: not homebrew_check.stat.exists
-      register: homebrew_install
-      become: false
-
-    - name: Add Homebrew to PATH for current session
-      ansible.builtin.set_fact:
-        ansible_env: "{{ ansible_env | combine({'PATH': '/home/linuxbrew/.linuxbrew/bin:' + ansible_env.PATH}) }}"
-
-    - name: Display Homebrew installation status
-      ansible.builtin.debug:
-        msg: "Homebrew installed successfully"
-      when: homebrew_install is defined and homebrew_install.changed
-
   roles:
     - clawdbot
 
@@ -114,7 +91,6 @@
           echo "Environment is configured:"
           echo "  XDG_RUNTIME_DIR: ${XDG_RUNTIME_DIR:-not set}"
           echo "  DBUS_SESSION_BUS_ADDRESS: ${DBUS_SESSION_BUS_ADDRESS:-not set}"
-          echo "  Homebrew: $(which brew 2>/dev/null || echo 'not found')"
           echo "  Clawdbot: $(clawdbot --version 2>/dev/null || echo 'not found')"
           echo ""
           echo "--------------------------------------------------------"

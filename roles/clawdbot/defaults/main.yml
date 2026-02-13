@@ -16,7 +16,6 @@ clawdbot_user: clawdbot
 clawdbot_home: /home/clawdbot
 
 # Linux settings
-homebrew_prefix: /home/linuxbrew/.linuxbrew
 package_manager: apt
 
 # Installation mode: 'release' or 'development'
